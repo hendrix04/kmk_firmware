@@ -1,16 +1,27 @@
 import board
 
+<<<<<<< HEAD
 from kmk.extensions.LED import LED
+=======
+>>>>>>> 29ba0bc (Create kb.py)
 from kmk.kmk_keyboard import KMKKeyboard as _KMKKeyboard
 from kmk.scanners import DiodeOrientation
 
 
 class KMKKeyboard(_KMKKeyboard):
+<<<<<<< HEAD
     col_pins = (
         board.GP0,
         board.GP1,
         board.GP2,
         board.GP3,
+=======
+    col_pins = ( 
+        board.GP0,
+        board.GP1,
+        board.GP2,
+        board.GP3,     
+>>>>>>> 29ba0bc (Create kb.py)
         board.GP4,
         board.GP5,
         board.GP6,
