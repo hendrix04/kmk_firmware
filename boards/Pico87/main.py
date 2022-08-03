@@ -8,6 +8,8 @@ from kmk.keys import KC
 from kmk.modules.layers import Layers
 from kmk.extensions.lock_status import LockStatus
 from kmk.extensions.stringy_keymaps import StringyKeymaps
+from kmk.keys import KC
+from kmk.modules.layers import Layers
 
 Pico87 = KMKKeyboard()
 
