@@ -30,6 +30,10 @@ class LEDLockStatus(LockStatus):
         if self.report_updated:
             self.set_lock_leds()
 
+    if self.get_scroll_lock():
+        Pico87.leds.set_brightness(50, leds=[1])
+    else:
+        Pico87.leds.set_brightness(0, leds=[1])
 
 Pico87.modules.append(Layers())
 Pico87.extensions.append(LEDLockStatus())
@@ -64,10 +68,7 @@ def led_1_off():
 # toggle_caps_led()
 # led_1_off()
 
-KC.CAPS.after_release_handler(toggle_caps_led)
 MOLYR = KC.MO(1)
-# MOLAYER.after_press_handler(led_1_on)
-# MOLAYER.after_release_handler(led_1_off)
 
 # Make this for better looking formatting...
 ______ = 'NO'
