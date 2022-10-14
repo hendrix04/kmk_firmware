@@ -55,6 +55,7 @@ def send_string(message):
 IBUS_KEY_COMBO = simple_key_sequence((KC.LCTRL(KC.LSHIFT(KC.U)),))
 RALT_KEY = simple_key_sequence((KC.RALT,))
 U_KEY = simple_key_sequence((KC.U,))
+PLUS_KEY = simple_key_sequence((KC.KP_PLUS,))
 ENTER_KEY = simple_key_sequence((KC.ENTER,))
 RALT_DOWN_NO_RELEASE = simple_key_sequence((KC.RALT(no_release=True),))
 RALT_UP_NO_PRESS = simple_key_sequence((KC.RALT(no_press=True),))
@@ -123,6 +124,10 @@ def unicode_codepoint_sequence(codepoints):
             keyboard.process_key(
                 simple_key_sequence(_winc_unicode_sequence(kc_macros, keyboard)), True
             )
+        elif keyboard.unicode_mode == UnicodeMode.WINALT:
+            keyboard.process_key(
+                simple_key_sequence(_winalt_unicode_sequence(kc_macros, keyboard)), True
+            )
 
     return make_key(on_press=_unicode_sequence)
 
@@ -153,3 +158,10 @@ def _winc_unicode_sequence(kc_macros, keyboard):
         yield U_KEY
         yield kc_macro
         yield ENTER_KEY
+
+def _winalt_unicode_sequence(kc_macros, keyboard):
+    for kc_macro in kc_macros:
+        yield RALT_DOWN_NO_RELEASE
+        yield PLUS_KEY
+        yield kc_macro
+        yield RALT_UP_NO_PRESS

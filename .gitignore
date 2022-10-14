@@ -130,3 +130,6 @@ kmk/release_info.mpy
 *.mpy
 .vscode
 .dist
+
+# Hendrix Personal
+boards/Pico87/kb_passwords.py

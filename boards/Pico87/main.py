@@ -2,13 +2,20 @@ import board
 
 from kb import KMKKeyboard
 
+# Remove this if you need to push up for some reason
+from kb_passwords import Passwords
+
+from kmk.consts import UnicodeMode
 from kmk.extensions.lock_status import LockStatus
 from kmk.extensions.stringy_keymaps import StringyKeymaps
+from kmk.handlers.sequences import send_string, unicode_string_sequence
 from kmk.keys import KC
 from kmk.modules.layers import Layers
 
 Pico87 = KMKKeyboard()
+pswd = Passwords()
 
+Pico87.unicode_mode = UnicodeMode.WINALT
 
 class LEDLockStatus(LockStatus):
     def set_lock_leds(self):
@@ -34,6 +41,12 @@ Pico87.extensions.append(LEDLockStatus())
 Pico87.extensions.append(StringyKeymaps())
 
 MOLYR = KC.MO(1)
+PASSWD = send_string(pswd.work)
+SHRG = unicode_string_sequence('¯\_(ツ)_/¯')
+# SHRG = unicode_codepoint_sequence([
+#     '00af', '005c', '005f', '0028', '30c4',
+#     '0029', '005f', '002f', '00af'
+# ])
 
 # Make this for better looking formatting...
 ______ = 'NO'
@@ -52,8 +65,8 @@ Pico87.keymap = [[
     'GRV',   'N1',   'N2',   'N3',   'N4',   'N5',   'N6',   'N7',   'N8',   'N9',   'N0', 'MINS',  'EQL', ______, 'BSPC',  'INS', 'HOME', 'PGUP',
     'TAB', ______,    'Q',    'W',    'E',    'R',    'T',    'Y',    'U',    'I',    'O',    'P', 'LBRC', 'RBRC', 'BSLS',  'DEL',  'END', 'PGDN',
    'CAPS', ______,    'A',    'S',    'D',    'F',    'G',    'H',    'J',    'K',    'L', 'SCLN', 'QUOT',  'ENT', ______, ______, ______, ______,
-   ______, 'LSFT',    'Z',    'X',    'C',    'V',    'B',    'N',    'M', 'COMM',  'DOT', 'SLSH', ______, 'RSFT', ______, ______,   'UP', ______,
-   'LCTL', 'LGUI', ______, 'LALT', ______, ______,  'SPC', ______, ______, ______, 'RALT', 'RGUI', ______,  MOLYR, 'RCTL', 'LEFT', 'DOWN', 'RGHT',
+   ______, 'LSFT',    'Z',    'X',    'C',    'V',    'B',    'N',    'M', 'COMM',  'DOT', PASSWD, ______,   SHRG, ______, ______,   'UP', ______,
+   'LCTL', 'LGUI', ______, 'LALT', ______, ______,  'SPC', ______, ______, ______, 'RALT', 'RGUI', ______, 'TRNS', 'RCTL', 'LEFT', 'DOWN', 'RGHT',
 ]]
 
 if __name__ == '__main__':
