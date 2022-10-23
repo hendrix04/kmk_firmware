@@ -2,6 +2,7 @@ import board
 
 from kb import KMKKeyboard
 
+<<<<<<< HEAD
 # Remove this if you need to push up for some reason
 from kb_passwords import Passwords
 
@@ -9,13 +10,24 @@ from kmk.consts import UnicodeMode
 from kmk.extensions.lock_status import LockStatus
 from kmk.extensions.stringy_keymaps import StringyKeymaps
 from kmk.handlers.sequences import send_string, unicode_string_sequence
+=======
+from kmk.extensions.lock_status import LockStatus
+from kmk.extensions.stringy_keymaps import StringyKeymaps
+from kmk.keys import KC
+from kmk.modules.layers import Layers
+from kmk.extensions.lock_status import LockStatus
+from kmk.extensions.stringy_keymaps import StringyKeymaps
+>>>>>>> origin/master
 from kmk.keys import KC
 from kmk.modules.layers import Layers
 
 Pico87 = KMKKeyboard()
+<<<<<<< HEAD
 pswd = Passwords()
 
 Pico87.unicode_mode = UnicodeMode.WINALT
+=======
+>>>>>>> origin/master
 
 class LEDLockStatus(LockStatus):
     def set_lock_leds(self):
@@ -35,6 +47,13 @@ class LEDLockStatus(LockStatus):
         if self.report_updated:
             self.set_lock_leds()
 
+<<<<<<< HEAD
+=======
+    if self.get_scroll_lock():
+        Pico87.leds.set_brightness(50, leds=[1])
+    else:
+        Pico87.leds.set_brightness(0, leds=[1])
+>>>>>>> origin/master
 
 Pico87.modules.append(Layers())
 Pico87.extensions.append(LEDLockStatus())
