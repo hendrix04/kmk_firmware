@@ -13,7 +13,6 @@ from kmk.modules.layers import Layers
 
 Pico87 = KMKKeyboard()
 
-
 class LEDLockStatus(LockStatus):
     def set_lock_leds(self):
         if self.get_caps_lock():
