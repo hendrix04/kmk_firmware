@@ -1,5 +1,5 @@
 class Passwords():
-    work = 'IfILayHere2@'
+    work = ''
 
 class Utils():
     def CreateHotkey(KC, key):
